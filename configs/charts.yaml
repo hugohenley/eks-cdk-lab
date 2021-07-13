@@ -1,0 +1,34 @@
+default:
+  kube2iam:
+    id: "Kube2IAM"
+    chart_name: "kube2iam"
+    repository: "https://jtblin.github.io/kube2iam/"
+    namespace: "kube-system"
+    values: {}
+  load-balancer-controller:
+    id: "LoadBalancerController"
+    chart_name: "aws-load-balancer-controller"
+    repository: "https://aws.github.io/eks-charts"
+    namespace: "kube-system"
+    values:
+      replicaCount: 1
+      clusterName: "HelloEKS39C624A1-52018b6843b54296b978df9fae437f2d"
+      ingressClass: alb
+      podAnnotations:
+        iam.amazonaws.com/role: "arn:aws:iam::435705527029:role/EC2FullAccess"
+      serviceAccount:
+        create: true
+        name: aws-load-balancer-controller
+      rbac:
+        create: true
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+# cluster-autoscaler
+# metrics-server
+beta:
+  xxx: yyy

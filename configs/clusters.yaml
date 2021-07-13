@@ -1,0 +1,19 @@
+clusters:
+  beta:
+    id: "HelloEKS"
+    default_capacity: 0
+#    version:
+    node_groups:
+      - id: "T3_Large"
+        instance_types:
+          - t3.large
+        min_size: 1
+        disk_size: 30
+#      ami_type: AL2_X86_64
+    region: us-west-2
+    name: xxx
+    vpc: xxx
+    subnets: yyy
+    mesh_configs:
+      enabled: true
+      ref: xxx # optional ; otherwise default config

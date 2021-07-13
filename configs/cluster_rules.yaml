@@ -1,0 +1,8 @@
+clusters:
+  rules:
+    - name: "ProductionReady"  # Being able to define what does it mean to be 'ProductionReady'
+      matchExpressions:
+      - key: kubernetes.io/e2e-az-name
+        operator: In
+        values:
+          - e2e-az1
